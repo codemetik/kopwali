@@ -1,0 +1,41 @@
+email + 000webhost
+ready.adi202109@gmail.com
+admin2021
+
+webnya
+koperasi
+*#4CVkQ5jIjm1UZ*MLf!
+
+
+db_koperasi
+usr_koperasi
+oHOln~t(nyKp)[5P
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html-f
+RewriteRule ^(.*)$ $1.html
+</IfModule>
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php-f
+RewriteRule ^(.*)$ $1.php
+</IfModule>
+
+
+Malem bang,. 
+Ini web demonnya sudah bisa di akses
+https://fiduciary-eases.000webhostapp.com/
+
+login ada 3 level user
+
+1. admin and admin
+2. op and op
+3. nik and nik
+
+itu username dan pwd nya
+
+
