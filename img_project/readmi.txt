@@ -11,6 +11,11 @@ db_koperasi
 usr_koperasi
 oHOln~t(nyKp)[5P
 
+db :
+id16563753_db_koperasi
+usr :
+id16563753_usr_koperasi
+
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d

@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteRule ^simpanan$ index.php?page=simpanan [QSA]
+RewriteRule ^pinjaman$ index.php?page=pinjaman [QSA]
+RewriteRule ^pengembalian$ index.php?page=pengembalian [QSA]
+RewriteRule ^data_user$ index.php?page=data_user [QSA]

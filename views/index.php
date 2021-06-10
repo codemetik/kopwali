@@ -7,7 +7,7 @@
   <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
   <ul class="navbar-nav px-3 w-100">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="?page=user"><span data-feather="users"></span> | <?= $_SESSION['user']; ?></a>
+      <a class="nav-link" href="#"><span data-feather="users"></span> | <?= $_SESSION['user']; ?></a>
     </li>
   </ul>
 </header>
@@ -24,21 +24,27 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="?page=tabunganku">
+            <a class="nav-link" href="tabungan">
               <span data-feather="bar-chart-2"></span>
-              Tabungnku
+              Tabungan
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="?page=pinjamanku">
+            <a class="nav-link" href="?page=pinjaman">
               <span data-feather="file"></span>
-              Pinjamanku
+              Pinjaman
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="?page=pelunasan">
+            <a class="nav-link" href="?page=pengembalian">
               <span data-feather="cast"></span>
-              Pelunasan
+              Pengembalian
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="?page=data_user">
+              <span data-feather="users"></span>
+              Data User
             </a>
           </li>
         </ul>
@@ -82,20 +88,17 @@
           $page = $_GET['page'];
 
           switch ($page) {
-            case 'home':
-              require_once('home.php');
+            case 'tabungan':
+              require_once('admin/tabungan.php');
               break;
-            case 'user':
-              require_once('nik/user.php');
+            case 'pinjaman':
+              require_once('admin/pinjaman.php');
               break;
-            case 'tabunganku':
-              require_once('nik/tabunganku.php');
+            case 'pengembalian':
+              require_once('admin/pengembalian.php');
               break;
-            case 'pinjamanku':
-              require_once('nik/pinjamanku.php');
-              break;
-            case 'pelunasan':
-              require_once('nik/pelunasan.php');
+            case 'data_user':
+              require_once('admin/data_user.php');
               break;
             
             default:

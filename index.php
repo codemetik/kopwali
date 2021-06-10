@@ -43,7 +43,7 @@ require_once("assets/koneksi.php");
     
 <main class="form-signin">
   <form class="mb-5 pb-5" action="" method="post">
-    <img class="mb-4" src="assets/img/data.png" alt="" width="72" height="57">
+    <img class="mb-4" src="assets/img/data.png" alt="" width="225" height="200">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
@@ -75,7 +75,10 @@ require_once("assets/koneksi.php");
 
 if (isset($_POST['sign'])) {
   $user = $_POST['user'];
-  $pass = md5($_POST['pass']);
+  $pass = $_POST['pass'];
+
+  $user = mysqli_real_escape_string($koneksi, $user);
+  $pass = mysqli_real_escape_string($koneksi, $pass);
 
   $query = mysqli_query($koneksi, "select * from tb_user where user = '$user' and pass = '$pass'");
   $sql = mysqli_num_rows($query);
@@ -90,7 +93,7 @@ if ($sql > 0) {
     $_SESSION['user'] = $dsql['user'];
     echo "<script>
     alert('Anda berhasil login');
-    document.location.href = 'views/pemilik.php';
+    document.location.href = 'views/pemilik';
     </script>";
     //header("location:views/pemilik.php");
   }else if ($datacek['id_level_user'] == 'LV02') {
@@ -98,7 +101,7 @@ if ($sql > 0) {
     $_SESSION['user'] = $dsql['user'];
     echo "<script>
     alert('Anda berhasil login');
-    document.location.href = 'views/admin.php';
+    document.location.href = 'views/admin';
     </script>";
     //header("location:views/admin.php");
   }else if ($datacek['id_level_user'] == 'LV03') {
@@ -106,7 +109,7 @@ if ($sql > 0) {
     $_SESSION['user'] = $dsql['user'];
     echo "<script>
     alert('Anda berhasil login');
-    document.location.href = 'views/nik.php';
+    document.location.href = 'views/nik';
     </script>";
     //header("location:views/nik.php");
   }
