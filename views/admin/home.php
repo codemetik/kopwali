@@ -5,7 +5,7 @@
         <h5 class="card-title">Success card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
-      <div class="card-footer bg-transparent border-success">Total Simpanan</div>
+      <div class="card-footer bg-transparent border-success">Total Simpanan P,W,S</div>
     </div>
   </div>
   <div class="col-sm-3">
@@ -32,7 +32,7 @@
         <h5 class="card-title">Success card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
-      <div class="card-footer bg-transparent border-success">SHU</div>
+      <div class="card-footer bg-transparent border-success">Total Sisa Hasil Usaha</div>
     </div>
   </div>
 </div>

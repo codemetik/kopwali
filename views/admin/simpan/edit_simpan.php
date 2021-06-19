@@ -11,13 +11,13 @@ if (isset($_GET['id'])) {
 	$djs = mysqli_fetch_array($jns_simpan);
 
 	if ($ds['jumlah_wajib'] == '0') {
-		$dis = 'disabled';
+		$dis = 'readonly';
 	}else if ($ds['jumlah_wajib'] >= '0') {
-		$dis = '';
+		$dis = 'readonly';
 	}
 
 	if ($ds['jumlah_sukarela'] == '0') {
-		$disk = 'disabled';
+		$disk = 'readonly';
 	}else if ($ds['jumlah_sukarela'] >= '0') {
 		$disk = '';
 	}

@@ -24,4 +24,6 @@ function rupiah($angka){
 	return $hasil_rupiah;
  
 }
+
+date_default_timezone_set('Asia/Jakarta');
 ?>

@@ -1,11 +1,11 @@
 <div class="row">
 	<div class="card bg-light">
 		<div class="card-header">
-			<h5 class="card-title">Tabungan Members</h5>
+			<h5 class="card-title">Data Tabungan Member</h5>
 		</div>
 		<div class="card-body">
 		<div class="col-sm-12 table-responsive">
-		<h5><a target="_blank" href="../admin/simpan/download.php"><button class="btn-md btn-primary"><span data-feather="download"></span> Export ke Excel</button></a></h5>
+		<h5><a target="_blank" href="../admin/simpan/download/download_tabungan.php"><button class="btn-md btn-primary"><span data-feather="download"></span> Export ke Excel</button></a></h5>
 		<table id="example" class="display table" style="width:100%">
 			<thead class="text-center table-dark">
 				<tr>

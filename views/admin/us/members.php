@@ -13,7 +13,7 @@ require_once('ambil_code.php');
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="input-group input-group-sm mb-1">
-				<select class="js-example-basic-single form-control" name="id_user">
+				<select class="js-example-basic-single form-control" name="id_user" required>
 				  <?php 
 				  $sql = mysqli_query($koneksi, "SELECT * FROM tb_user X INNER JOIN tb_rols z ON z.id_user = x.id_user INNER JOIN tb_level_user Y ON y.id_level_user = z.id_level_user WHERE z.id_level_user != 'LV01' AND z.id_level_user != 'LV02'");
 				  while ($data = mysqli_fetch_array($sql)) { 
@@ -32,13 +32,13 @@ require_once('ambil_code.php');
 				  <input type="text" class="form-control" name="id_anggota" value="<?php get_code($koneksi); ?>" readonly>
 				</div>
 				<div class="input-group input-group-sm mb-1">
-				  <input type="text" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap . .">
+				  <input type="text" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap . ." required>
 				</div>
 				<div class="input-group input-group-sm mb-1">
-				  <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir . .">
+				  <input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir . ." required>
 				</div>
 				<div class="form-floating mb-1">
-				  <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir">
+				  <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" required>
 				  <label for="tgl_lahir">Tanggal Lahir</label>
 				</div>
 			</div>
@@ -62,7 +62,7 @@ require_once('ambil_code.php');
 			</div>
 			<div class="col-sm-4">
 				<div class="form-floating mb-1">
-					<input type="date" id="tgl_join" name="tgl_join" class="form-control">
+					<input type="date" id="tgl_join" name="tgl_join" class="form-control" required>
 					<label for="tgl_join">Tanggal Join</label>
 				</div>
 				<div class="form-floating mb-1">

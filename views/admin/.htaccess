@@ -1,5 +1,5 @@
 RewriteEngine on
 RewriteRule ^simpanaan$ index.php?page=simpanaan [QSA]
 RewriteRule ^pinjaman$ index.php?page=pinjaman [QSA]
-RewriteRule ^pengembalian$ index.php?page=pengembalian [QSA]
+RewriteRule ^shu$ index.php?page=shu [QSA]
 RewriteRule ^data_user$ index.php?page=data_user [QSA]

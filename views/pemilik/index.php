@@ -18,11 +18,12 @@ if($_SESSION['status'] != "login"){
     <link rel="icon" href="../../assets/img/data.png">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
-    
+    <link rel="stylesheet" href="../../plugins/datatables/jquery.dataTables.min.css">
 
     <!-- Bootstrap core CSS -->
 <link href="../../plugins/bootstrap-5/dist/css/bootstrap.css" rel="stylesheet">
 <link href="../../plugins/bootstrap-5/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <style>
       .bd-placeholder-img {
@@ -70,7 +71,7 @@ if($_SESSION['status'] != "login"){
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="simpanan">
+            <a class="nav-link" href="simpananmember">
               <span data-feather="bar-chart-2"></span>
               Simpanan
             </a>
@@ -134,8 +135,11 @@ if($_SESSION['status'] != "login"){
           $page = $_GET['page'];
 
           switch ($page) {
-            case 'simpanan':
-              require_once('simpanan.php');
+            case 'simpananmember':
+              require_once('simpananmember.php');
+              break;
+            case 'detail_simpanan':
+              require_once('simpan/detail_simpanan.php');
               break;
             case 'pinjaman':
               require_once('pinjaman.php');
@@ -156,6 +160,22 @@ if($_SESSION['status'] != "login"){
     </main>
   </div>
 </div>
+
+    <script src="../../plugins/datatables/jquery-3.5.1.js"></script>
+    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $('#example').DataTable();
+      } 
+      );
+
+      $(document).ready(function() {
+          $('.js-example-basic-single').select2();
+      });
+
+      
+    </script>
 
     <script src="../../plugins/bootstrap-5/dist/js/bootstrap.bundle.min.js"></script>
 

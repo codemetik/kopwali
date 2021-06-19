@@ -90,9 +90,9 @@ if($_SESSION['status'] != "login"){
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pengembalian">
+            <a class="nav-link" href="shu">
               <span data-feather="cast"></span>
-              Pengembalian
+              Pembagian SHU
             </a>
           </li>
           <li class="nav-item">
@@ -174,8 +174,8 @@ if($_SESSION['status'] != "login"){
             case 'pinjaman':
               require_once('pinjaman.php');
               break;
-            case 'pengembalian':
-              require_once('pengembalian.php');
+            case 'shu':
+              require_once('shu.php');
               break;
             case 'data_user':
               require_once('data_user.php');

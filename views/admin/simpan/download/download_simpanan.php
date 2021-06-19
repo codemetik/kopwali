@@ -1,5 +1,5 @@
 <?php 
-require_once("../../../assets/koneksi.php");
+require_once("../../../../assets/koneksi.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,7 @@ require_once("../../../assets/koneksi.php");
 					<td><?= $dts['id_user']; ?></td>
 					<td><?= $dts['nama_lengkap']; ?></td>
 					<td><?= $dts['jenis_simpanan']; ?></td>
-					<td><?= $dts['jumlah_wajib']; ?></td>
+					<td class="bg-primary"><?= $dts['jumlah_wajib']; ?></td>
 					<td><?= $dts['jumlah_sukarela']; ?></td>
 					<td><?= $dts['tgl_simpan']; ?></td>
 					<td></td>
