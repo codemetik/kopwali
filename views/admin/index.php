@@ -53,8 +53,8 @@ if($_SESSION['status'] != "login"){
     crossorigin="anonymous"></script> -->
   </head>
   <body>
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.php"><img src="../../assets/img/data.png" alt="" width="40" height="34"/> Kopwali</a>
+<header class="navbar navbar-dark sticky-top bg-info flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-dark" href="index.php"><img src="../../assets/img/data.png" alt="" width="40" height="34"/> Kopwali</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -68,36 +68,36 @@ if($_SESSION['status'] != "login"){
 
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-info sidebar collapse">
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="index.php">
-              <span data-feather="home"></span>
+              <span data-feather="home" class="text-dark"></span>
               Dashboard
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="simpanaan">
-              <span data-feather="bar-chart-2"></span>
+              <span data-feather="bar-chart-2" class="text-dark"></span>
               Simpanan
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="pinjaman">
-              <span data-feather="file"></span>
+              <span data-feather="file" class="text-dark"></span>
               Pinjaman
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="shu">
-              <span data-feather="cast"></span>
+              <span data-feather="cast" class="text-dark"></span>
               Pembagian SHU
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="data_user">
-              <span data-feather="users"></span>
+              <span data-feather="users" class="text-dark"></span>
               Data User
             </a>
           </li>
@@ -106,13 +106,13 @@ if($_SESSION['status'] != "login"){
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Settings</span>
           <a class="link-secondary" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
+            <span data-feather="plus-circle" class="text-dark"></span>
           </a>
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
             <a class="nav-link" href="?page=settings">
-              <span data-feather="settings"></span>
+              <span data-feather="settings" class="text-dark"></span>
               Settings
             </a>
           </li>
@@ -120,13 +120,13 @@ if($_SESSION['status'] != "login"){
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
           <span>Logout</span>
           <a class="link-secondary" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
+            <span data-feather="plus-circle" class="text-dark"></span>
           </a>
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
             <a class="nav-link" href="../../logout.php">
-              <span data-feather="log-out"></span>
+              <span data-feather="log-out" class="text-dark"></span>
               Log-out
             </a>
           </li>
@@ -134,13 +134,15 @@ if($_SESSION['status'] != "login"){
         <hr>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
-            <h2 id="timestamp" class="nav-link"></h2>    
+            <h2 id="timestamp" class="text-center text-success"></h2>    
           </li>
           <li class="nav-item">
-            <?php
+            <div class="card card-body m-2 text-center">
+              <?php
             $jumHari = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
-            echo "<p class='nav-link'>Jumlah ".$jumHari." hari dalam bulan ".date('F')." tahun ".date('Y')."</p>";
+            echo "<p>Jumlah ".$jumHari." hari dalam bulan ".date('F')." tahun ".date('Y')."</p>";
             ?>
+            </div>
           </li>
         </ul>
       </div>
@@ -209,7 +211,77 @@ if($_SESSION['status'] != "login"){
           $('.js-example-basic-single').select2();
       });
 
-      
+    </script>
+    <script type="text/javascript">
+      //script request server pada halaman entry data pinjaman anggota
+    $(document).ready(function(){
+      $('#status').hide();
+      $('#jumlh').hide();
+      $('#floa').change(function(){
+        var id_anggota = $('#floa').val();
+        $.ajax({
+          type:'POST',
+          url: "tenor.php",
+          data: {id_anggota:id_anggota},
+          cache: false,
+          success:function(msg){
+            if (msg >= 24) {
+              $('#status').html('Max Pinjaman <b>Rp.15.000.000</b>');
+              $('#status').show();
+              $('#status').css('color','green');
+              document.getElementById('jumlh').value = '15000000';
+            }else if(msg >= 7 && msg <= 24){
+              $('#status').html('Max Pinjaman <b>Rp.4.000.000</b>');
+              $('#status').show();
+              $('#status').css('color','green');
+              document.getElementById('jumlh').value = '4000000';
+            }else if(msg >= 3 && msg <= 6){
+              $('#status').html('Max Pinjaman <b>Rp.1.500.000</b>');
+              $('#status').show();
+              $('#status').css('color','green');
+              document.getElementById('jumlh').value = '1500000';
+            }else{
+              $('#status').html('<b>ERROR</b>');
+              $('#status').show();
+              $('#status').css('color','red');
+            }
+          }
+        });
+      });
+
+      $('#floa').change(function(){
+        var id_agt = $('#floa').val();
+        $.ajax({
+          type:'POST',
+          url: 'tenor.php',
+          data: {id:id_agt},
+          cache: false,
+          success: function(msgid){
+            $('#tenor').html(msgid);
+          }
+        });
+      });
+    });
+
+    $(document).ready(function(){
+
+      // $('#bayar').click(function(){
+      //   alert('');
+      // });
+      $("#bayar").on( 'click', function () {
+      reset();
+      alertify.confirm("Apakah yakin anggota akan membayar???", function (e) {
+        if (e) {
+          alertify.success("You've clicked OK");
+        } else {
+          alertify.error("You've clicked Cancel");
+        }
+      });
+      return false;
+    });
+
+    }); 
+
     </script>
 
     <script>

@@ -81,7 +81,7 @@ if (isset($_GET['tampil'])) {
 											</tr>
 										<?php }else if($bunga['id_bunga'] == '2'){
 											$cp = $dpin['jumlah_pinjaman']/$dpin['tenor']; //cicilan pokok perbulan
-											$cb = ($$dpin['jumlah_pinjaman']-($nomer - 1)*$cp)*$bunga['jumlah_bunga']/100/$dpin['tenor']; //cicilan bunga perbulan
+											$cb = ($dpin['jumlah_pinjaman']-($nomer - 1)*$cp)*$bunga['jumlah_bunga']/100/$dpin['tenor']; //cicilan bunga perbulan
 											$tc = $cp+$cb;
 
 											$tjp = ($dpin['jumlah_pinjaman']/$dpin['tenor'])*$dpin['tenor']; //total cicilan pokok

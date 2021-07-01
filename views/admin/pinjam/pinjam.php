@@ -1,8 +1,8 @@
 <?php require_once('code_id.php'); ?>
 <div class="row">
 	<div class="col-sm-12">
-	<div class="card mb-3 bg-light">
-		<div class="card-header">
+	<div class="card mb-3">
+		<div class="card-header bg-info">
 			<h5 class="card-title">Entry Data Pinjaman Anggota</h5>
 		</div>
 		<div class="card-body">
@@ -13,12 +13,12 @@
 						  <input type="text" class="form-control" name="id_pinjaman" value="<?= get_code($koneksi); ?>" readonly>
 						</div>
 						<div class="input-group input-group-sm mb-1">
-						<select class="js-example-basic-single form-control" name="id_anggota" id="floatingSelect" aria-label="Floating label select example" required>
+						<select class="js-example-basic-single form-control" name="id_anggota" id="floa" aria-label="Floating label select example" required>
 							<option value="">--Pilih Anggota--</option>
 						  <?php 
 						  $sql = mysqli_query($koneksi, "select * from tb_user");
 						  while ($data = mysqli_fetch_array($sql)) { 
-						  	$anggota = mysqli_query($koneksi, "select * from tb_anggota where id_user = '".$data['id_user']."'");
+						  	$anggota = mysqli_query($koneksi, "select *, TIMESTAMPDIFF(MONTH,tgl_join,NOW()) AS lama_join from tb_anggota where id_user = '".$data['id_user']."'");
 						  	$datagt = mysqli_fetch_array($anggota);
 						  	$a= mysqli_query($koneksi, "select * from tb_pinjaman where id_anggota = '".$datagt['id_anggota']."'");
 						  	$d = mysqli_fetch_array($a);
@@ -26,7 +26,7 @@
 						  		if ($datagt['id_anggota'] == $d['id_anggota']) {
 						  			
 						  		}else{ ?>
-						  			<option value="<?= $datagt['id_anggota'] ?>"><?= $datagt['id_anggota']; ?> || <?= $datagt['nama_lengkap'] ?> </option>
+						  			<option value="<?= $datagt['id_anggota'] ?>"><?= $datagt['id_anggota']; ?> || <?= $datagt['nama_lengkap'].' || '.$datagt['lama_join'].' bulan'; ?> </option>
 						  		<?php }
 						  		}else{
 						  			//null
@@ -34,6 +34,10 @@
 						  }
 						  ?>
 						</select>
+						</div>
+						<div class="input-group input-group-sm">
+							<input type="text" class="form-control" name="jumlh" id="jumlh" readonly>
+							<p id="status"></p>
 						</div>
 						<div class="form-floating mb-1">
 						  <input type="date" class="form-control" id="tgl_pinjam" name="tgl_pinjam" required>
@@ -98,14 +102,9 @@
 								<div class="card-body">
 									<div class="row">
 										<div class="col-sm-12">
-										<select class="js-example-basic-single form-control" name="tenor" id="floatingSelect4" required>
+										<select class="js-example-basic-single form-control" name="tenor" id="tenor" required>
 											<option value="">--Pilih Tenor--</option>
-										  <?php 
-										  $bln = array('3','6','9','12');
-										  foreach($bln as $key) {?>
-										  		<option value="<?= $key; ?>"><?= $key; ?></option>
-										  <?php }
-										  ?>
+
 										</select>
 										</div>
 										</div>
@@ -123,13 +122,13 @@
 	</div>
 	<div class="col-sm-12">
 		<div class="card">
-			<div class="card-header">
+			<div class="card-header bg-info">
 				<h5 class="card-title">Table Pinjaman</h5>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table id="example" class="display table" style="width: 100%">
-						<thead>
+					<table id="example" class="display table table-bordered" style="width: 100%; font-size: 12px;">
+						<thead class="table-info">
 							<tr>
 								<th>ID Pinjaman</th>
 								<th>ID Anggota</th>
@@ -168,7 +167,7 @@
 							}
 							?>
 						</tbody>
-						<tfoot>
+						<tfoot class="table-info">
 							<tr>
 								<th>ID Pinjaman</th>
 								<th>ID Anggota</th>

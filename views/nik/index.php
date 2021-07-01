@@ -18,11 +18,12 @@ if($_SESSION['status'] != "login"){
     <link rel="icon" href="../../assets/img/data.png">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
-    
+    <link rel="stylesheet" href="../../plugins/datatables/jquery.dataTables.min.css">
 
     <!-- Bootstrap core CSS -->
 <link href="../../plugins/bootstrap-5/dist/css/bootstrap.css" rel="stylesheet">
 <link href="../../plugins/bootstrap-5/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <style>
       .bd-placeholder-img {
@@ -44,9 +45,9 @@ if($_SESSION['status'] != "login"){
     <!-- Custom styles for this template -->
     <link href="../../plugins/dashboard/dashboards.css" rel="stylesheet">
   </head>
-  <body>
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.php">Kopwali</a>
+  <body class="bg-dark">
+<header class="navbar navbar-dark sticky-top bg-info flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.php"><img src="../../assets/img/data.png" alt="" width="40" height="34"/> Kopwali</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -60,25 +61,25 @@ if($_SESSION['status'] != "login"){
 
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-info sidebar collapse">
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">
-              <span data-feather="home"></span>
+            <a class="nav-link" aria-current="page" href="index.php">
+              <span data-feather="home" class="text-dark"></span>
               Dashboard
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="simpananku">
               <span data-feather="bar-chart-2"></span>
-              Simpananku
+              SimpananQu
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="pinjamanku">
               <span data-feather="file"></span>
-              Pinjamanku
+              PinjamanQu
             </a>
           </li>
           <li class="nav-item">
@@ -106,9 +107,9 @@ if($_SESSION['status'] != "login"){
       </div>
     </nav>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 text-light">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1> | <h5 class="h2"><?= $_SESSION['user']; ?></h5>
+        <h1 class="h2">Dashboard Informasi</h1> | <h5 class="h2"><?= $_SESSION['user']; ?></h5>
         <!-- <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -146,7 +147,7 @@ if($_SESSION['status'] != "login"){
               break;
           }
       }else{
-        get_default();
+        require_once('home.php');
       }
 
       function get_default(){
@@ -159,6 +160,21 @@ if($_SESSION['status'] != "login"){
     </main>
   </div>
 </div>
+
+    <script src="../../plugins/datatables/jquery-3.5.1.js"></script>
+    <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $('#example').DataTable();
+      } 
+      );
+
+      $(document).ready(function() {
+          $('.js-example-basic-single').select2();
+      });
+
+    </script>
 
     <script src="../../plugins/bootstrap-5/dist/js/bootstrap.bundle.min.js"></script>
 

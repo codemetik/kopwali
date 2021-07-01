@@ -4,8 +4,8 @@ require_once('ambil_code.php');
 ?>
 <div class="row">
 <div class="col-sm-12">
-<div class="card mb-3 bg-light">
-	<div class="card-header bg-light">
+<div class="card mb-3">
+	<div class="card-header bg-info">
 		<h5 class="card-title">Register Members</h5>
 	</div>
 	<div class="card-body">
@@ -20,7 +20,7 @@ require_once('ambil_code.php');
 				  	$anggota = mysqli_query($koneksi, "select * from tb_anggota where id_user = '".$data['id_user']."'");
 				  	$datagt = mysqli_fetch_array($anggota);
 				  	if ($data['id_user'] != $datagt['id_user']) {?>
-				  		<option value="<?= $data['id_user'] ?>"><?= $data['id_user']; ?> || <?= $data['user'] ?> </option>
+				  		<option value="<?= $data['id_user'] ?>"><?= $data['id_user']; ?> || <?= $data['user'] ?></option>
 				  	<?php }else{ ?>
 
 				  	<?php }
@@ -80,63 +80,63 @@ require_once('ambil_code.php');
 	</div>
 </div>
 </div>
-<div class="col-sm-12 table-responsive">
-	<table id="example" class="display table" style="width:100%">
-        <thead class="text-center table-dark">
-            <tr>
-            	<th>No</th>
-                <th>ID Anggota</th>
-                <th>ID User</th>
-                <th>Tgl Join</th>
-                <th>Nama Lengkap</th>
-                <th>Tempat Lahir</th>
-                <th>Tanggal Lahir</th>
-                <th>Alamat Sekarang</th>
-                <th>No Telpn</th>
-                <th>Simpanan Pokok</th>
-                <th>Tanggal Entry</th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        	<?php 
-        	$no=1;
-        	$sql = mysqli_query($koneksi, "select * from tb_anggota");
-        	while ($data = mysqli_fetch_array($sql)) {
-        		echo "<tr>
-        				<td>".$no++."</td>
-		                <td>".$data['id_anggota']."</td>
-		                <td>".$data['id_user']."</td>
-		                <td>".$data['tgl_join']."</td>
-		                <td>".$data['nama_lengkap']."</td>
-		                <td>".$data['tempat_lahir']."</td>
-		                <td>".$data['tgl_lahir']."</td>
-		                <td>".$data['alamat_sekarang']."</td>
-		                <td>".$data['no_telpn']."</td>
-		                <td>".rupiah($data['simpanan_pokok'])."</td>
-		                <td>".$data['tgl_entry']."</td>"; ?>
-		                <td><a href="?us=update_members&edit=<?= $data['id_user']; ?>"><span data-feather='edit'></span></a> | <a href='?us=members&delete=<?= $data['id_anggota'] ?>' onclick="return confirm('Yakin mau di hapus?')"><span data-feather='delete'></span></a></td>
-		            <?php "</tr>";
-        	}
-        	?>
-        </tbody>
-        <tfoot class="text-center table-dark">
-            <tr>
-            	<th>No</th>
-                <th>ID Anggota</th>
-                <th>ID User</th>
-                <th>Tgl Join</th>
-                <th>Nama Lengkap</th>
-                <th>Tempat Lahir</th>
-                <th>Tanggal Lahir</th>
-                <th>Alamat Sekarang</th>
-                <th>No Telpn</th>
-                <th>Simpanan Pokok</th>
-                <th>Tanggal Entry</th>
-                <th>Option</th>
-            </tr>
-        </tfoot>
-    </table>
+<div class="col-sm-12">
+	<div class="card">
+		<div class="card-header bg-info">
+			<h5 class="card-title">Table User Member</h5>
+		</div>
+		<div class="card-body">
+		<div class="col-sm-12 table-responsive">
+			<table id="example" class="display table table-bordered" style="width:100%; font-size: 12px;">
+		        <thead class="text-center table-info">
+		            <tr>
+		            	<th>No</th>
+		                <th>ID Anggota</th>
+		                <th>ID User</th>
+		                <th>Nama Lengkap</th>
+		                <th>Simpanan Pokok</th>
+		                <th>Tanggal Entry</th>
+		                <th>Tgl Join</th>
+		                <th>Lama Join</th>
+		                <th>Option</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		        	<?php 
+		        	$no=1;
+		        	$sql = mysqli_query($koneksi, "select id_anggota, id_user, nama_lengkap, simpanan_pokok, tgl_entry, tgl_join, timestampdiff(month,tgl_join,NOW()) as lama_join from tb_anggota");
+		        	while ($data = mysqli_fetch_array($sql)) {
+		        		echo "<tr>
+		        				<td>".$no++."</td>
+				                <td>".$data['id_anggota']."</td>
+				                <td>".$data['id_user']."</td>
+				                <td>".$data['nama_lengkap']."</td>
+				                <td>".rupiah($data['simpanan_pokok'])."</td>
+				                <td>".$data['tgl_entry']."</td>
+				                <td>".$data['tgl_join']."</td>
+				                <td>".$data['lama_join']." bulan</td>"; ?>
+				                <td><a href="?us=update_members&edit=<?= $data['id_user']; ?>"><span data-feather='edit'></span></a> | <a href='?us=members&delete=<?= $data['id_anggota'] ?>' onclick="return confirm('Yakin mau di hapus?')"><span data-feather='delete'></span></a></td>
+				            <?php "</tr>";
+		        	}
+		        	?>
+		        </tbody>
+		        <tfoot class="text-center table-info">
+		            <tr>
+		            	<th>No</th>
+		                <th>ID Anggota</th>
+		                <th>ID User</th>
+		                <th>Nama Lengkap</th>
+		                <th>Simpanan Pokok</th>
+		                <th>Tanggal Entry</th>
+		                <th>Tgl Join</th>
+		                <th>Lama Join</th>
+		                <th>Option</th>
+		            </tr>
+		        </tfoot>
+		    </table>
+		</div>		
+		</div>
+	</div>
 </div>
 </div>
 

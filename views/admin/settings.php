@@ -1,7 +1,18 @@
+<nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Setting</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><?php 
+    if (!isset($_GET['set'])) {
+    	echo "Setting";
+    }else{
+    	echo $_GET['set'];
+    }?></li>
+  </ol>
+</nav>
 <div class="row">
 	<div class="col-sm-6 mb-2">
-		<div class="card bg-light">
-			<div class="card-header">
+		<div class="card">
+			<div class="card-header bg-info">
 				<h5 class="card-title">JENIS SIMPANAN ANGGOTA</h5>
 			</div>
 			<div class="card-body">
@@ -30,8 +41,8 @@
 		</div>
 	</div>
 	<div class="col-sm-6 mb-2">
-		<div class="card bg-light">
-			<div class="card-header">
+		<div class="card">
+			<div class="card-header bg-info">
 				<h5 class="card-title">JENIS BUNGA PINJAMAN</h5>
 			</div>
 			<div class="card-body">

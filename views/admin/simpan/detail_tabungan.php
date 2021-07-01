@@ -1,5 +1,5 @@
-<div class="card alert-secondary mb-2">
-	<h5 class="m-2"><i>Detail Tabungan</i></h5>
+<div class="card alert-info mb-2">
+	<h7 class="m-2"><i>Detail>> Tabungan</i></h7>
 </div>
 <div class="row">
 	<div class="col-sm-12">
@@ -47,7 +47,7 @@ if (isset($_POST['search'])) {
 	if ($check > 0) {
 	
 	?>
-	<div class="row pt-2">
+	<div class="row pt-2" style="font-size: 12px;">
 		<div class="col-sm-6">
 			<div class="table-responsive">
 				<table class="display table table-bordered">
@@ -73,7 +73,7 @@ if (isset($_POST['search'])) {
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" style="font-size: 12px;">
 		<div class="col-sm-5">
 			<div class="card table-responsive p-1 bg-light">
 				<h5 class="card-title">Jumlah Total Simpanan Tahun : <b><?= $tahun ?></b></h5>

@@ -17,15 +17,7 @@ if (isset($_POST['simpan_data'])) {
 	$sqljenis = mysqli_query($koneksi, "select * from tb_jenis_pinjaman where id_jenis_pinjaman = '$id_jenis_pinjaman'");
 	$jenis = mysqli_fetch_array($sqljenis);
 
-	$cpok = mysqli_query($koneksi, "SELECT id_simpanan, SUM(jumlah_wajib) AS wajib, SUM(jumlah_sukarela) AS sukarela,
-id_user, id_anggota FROM tb_simpanan WHERE id_anggota = '$id_anggota'");
-	$sqk = mysqli_fetch_array($cpok);
-	if ($cicilan_pokok > $sqk['wajib']) {
-		echo "<script>
-		alert('Maaf, data anggota ini hanya bisa melakukan pinjaman dibawah nilai ".rupiah($sqk['wajib'])."!');
-		document.location.href = '../../admin/pinjaman?pin=Pinjaman';
-		</script>";
-	}else{
+
 
 	$query = mysqli_query($koneksi, "insert into tb_pinjaman(id_pinjaman, id_anggota, tgl_pinjam, tgl_entry, id_bunga, id_jenis_pinjaman, jumlah_pinjaman, tenor) values('$id_pinjaman','$id_anggota','$tgl_pinjam','$tgl_entry','$id_bunga','$id_jenis_pinjaman','$jml_pinjaman','$tenor')");
 	if ($query) {
@@ -40,7 +32,5 @@ id_user, id_anggota FROM tb_simpanan WHERE id_anggota = '$id_anggota'");
 		</script>";
 	}	
 
-	}
-	
 }
 ?>

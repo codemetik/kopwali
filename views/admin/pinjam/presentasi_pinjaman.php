@@ -9,6 +9,7 @@ if (isset($_POST['tampil_presen'])) {
 	$id_jenis_pinjaman = $_POST['id_jenis_pinjaman'];
 	$jml_pinjaman = $_POST['jml_pinjaman'];
 	$tenor = $_POST['tenor'];
+	$jumlh = $_POST['jumlh'];
 
 	//mengambil data dari t_bunga
 	$sqlbunga = mysqli_query($koneksi, "select * from tb_bunga where id_bunga = '$id_bunga'");
@@ -16,6 +17,21 @@ if (isset($_POST['tampil_presen'])) {
 	//mengambil data dari tb_jenis_pinjaman
 	$sqljenis = mysqli_query($koneksi, "select * from tb_jenis_pinjaman where id_jenis_pinjaman = '$id_jenis_pinjaman'");
 	$jenis = mysqli_fetch_array($sqljenis);
+
+	$lama_join = mysqli_query($koneksi, "select *, timestampdiff(month,tgl_join,now()) as lama_join from tb_anggota where id_anggota = '$id_anggota'");
+	$lj = mysqli_fetch_array($lama_join);
+
+	if ($lj['lama_join'] < 3) {
+		echo "<script>
+		alert('Maaf masa keanggotaan anda belum memenuhi syarat');
+		document.location.href = '../admin/pinjaman';
+		</script>";
+	}else if($jml_pinjaman > $jumlh){
+		echo "<script>
+		alert('Maaf Pinjaman lebih dari moninal maksimal yang ditentukan!!!');
+		document.location.href = '../admin/pinjaman';
+		</script>";
+	}
 
 }
 ?>

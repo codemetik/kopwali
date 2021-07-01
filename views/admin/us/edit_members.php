@@ -5,12 +5,12 @@ $sql = mysqli_query($koneksi, "select * from tb_user where id_user = '".$_GET['e
 $d = mysqli_fetch_array($sql);
 $cek = mysqli_num_rows($sql);
 if ($cek > 0) {
-$anggota = mysqli_query($koneksi, "select * from tb_anggota where id_user = '".$d['id_user']."'");
+$anggota = mysqli_query($koneksi, "select *, TIMESTAMPDIFF(MONTH,tgl_join,NOW()) AS lama_join from tb_anggota where id_user = '".$d['id_user']."'");
 $agt = mysqli_fetch_array($anggota);
 ?>
 <div class="card">
-	<div class="card-header alert-primary">
-		<h5 class="card-titile">Edit User Members</h5>
+	<div class="card-header bg-info">
+		<h5 class="card-title">Edit User Members</h5>
 	</div>
 	<div class="card-body">
 		<form action="" method="post">
@@ -24,20 +24,24 @@ $agt = mysqli_fetch_array($anggota);
 					  <span class="input-group-text">ID Usr</span>
 					  <input type="text" class="form-control" name="id_user" readonly value="<?= $d['id_user']; ?>">
 					</div>
+					<div class="form-floating mb-3">
+						<input type="text" id="nama" name="nama_lengkap" class="form-control" value="<?= $agt['nama_lengkap']; ?>">
+						<label for="nama">Nama Lengkap</label>
+					</div>
 				</div>
 				<div class="col-sm-6">
 					<div class="input-group input-group-sm form-floating mb-3">
 					  <input type="date" class="form-control" id="tgl_join" name="tgl_join" value="<?= $agt['tgl_join']; ?>" required>
 					  <label for="tgl_join">Tanggal Join</label>
 					</div>
+					<div class="form-floating mb-3">
+						<input type="text" id="lama_join" name="lama_join" class="form-control" value="<?= $agt['lama_join'].' bulan'; ?>">
+						<label for="lama_join">Lama Join</label>
+					</div>
 				</div>
 				<div class="col-sm-12">
 					<div class="row">
 						<div class="col-sm-6">
-							<div class="form-floating mb-3">
-								<input type="text" id="nama" name="nama_lengkap" class="form-control" value="<?= $agt['nama_lengkap']; ?>">
-								<label for="nama">Nama Lengkap</label>
-							</div>
 							<div class="form-floating mb-3">
 								<input type="text" id="tmp_lahir" name="tempat_lahir" class="form-control" value="<?= $agt['tempat_lahir']; ?>">
 								<label for="tmp_lahir">Tempat Lahir</label>

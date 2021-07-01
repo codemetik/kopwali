@@ -39,7 +39,7 @@ require_once("assets/koneksi.php");
     <!-- Custom styles for this template -->
     <link href="plugins/dashboard/signin.css" rel="stylesheet">
   </head>
-  <body class="text-center">
+  <body class="text-center bg-info">
     
 <main class="form-signin">
   <form class="mb-5 pb-5" action="" method="post">
@@ -91,6 +91,7 @@ if ($sql > 0) {
   if ($datacek['id_level_user'] == 'LV01') {
     $_SESSION['status'] = "login";
     $_SESSION['user'] = $dsql['user'];
+    $_SESSION['id_user'] = $dsql['id_user'];
     echo "<script>
     alert('Anda berhasil login');
     document.location.href = 'views/pemilik';
@@ -99,6 +100,7 @@ if ($sql > 0) {
   }else if ($datacek['id_level_user'] == 'LV02') {
     $_SESSION['status'] = "login";
     $_SESSION['user'] = $dsql['user'];
+    $_SESSION['id_user'] = $dsql['id_user'];
     echo "<script>
     alert('Anda berhasil login');
     document.location.href = 'views/admin';
@@ -107,6 +109,7 @@ if ($sql > 0) {
   }else if ($datacek['id_level_user'] == 'LV03') {
     $_SESSION['status'] = "login";
     $_SESSION['user'] = $dsql['user'];
+    $_SESSION['id_user'] = $dsql['id_user'];
     echo "<script>
     alert('Anda berhasil login');
     document.location.href = 'views/nik';

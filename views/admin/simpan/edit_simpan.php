@@ -24,7 +24,7 @@ if (isset($_GET['id'])) {
 }
 ?>
 <div class="card">
-	<div class="card-header">
+	<div class="card-header bg-info">
 		<h5 class="card-title">Edit Simpanan</h5>
 	</div>
 	<div class="card-body">

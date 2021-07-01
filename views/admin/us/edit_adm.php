@@ -9,7 +9,7 @@ $rols = mysqli_fetch_array($rol);
 
 if ($cek > 0) { ?>
 <div class="card">
-<div class="card-header alert-primary">
+<div class="card-header bg-info">
 	<h5 class="card-titile">Edit User ADM</h5>
 </div>
 <div class="card-body">
@@ -98,14 +98,4 @@ if (isset($_POST['update'])) {
 	
 }
 
-?>
-<br>
-<hr>
-<?php 
-$md5 = "indonesia";
-$text = md5($md5);
-
-echo $text;
-echo "<hr>";
-echo md5($text);
 ?>

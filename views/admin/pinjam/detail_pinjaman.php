@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="card">
-			<div class="card-header">
+			<div class="card-header bg-info">
 				<h5 class="card-title">Detail Pinjaman</h5>
 			</div>
 			<div class="card-body">
@@ -25,26 +25,26 @@
 
 				<div class="col-sm-6">
 					<div class="table-responsive">
-						<table class="display table table-sm" style="width: 100%;">
+						<table class="display table table-sm" style="width: 100%; font-size: 12px;">
 							<thead>
 								<tr><th>ID Pinjaman</th><td>:</td><td>
 									<div class="input-group input-group-sm mb-1">
-									  <input type="text" class="form-control" name="id_pinjaman" value="<?= $data['id_pinjaman']; ?>" readonly>
+									  <input type="text" class="form-control" style="font-size: 12px;" name="id_pinjaman" value="<?= $data['id_pinjaman']; ?>" readonly>
 									</div>
 								</td></tr>
 								<tr><th>ID Anggota</th><td>:</td><td>
 									<div class="input-group input-group-sm mb-1">
-									  <input type="text" class="form-control" name="id_anggota" value="<?= $data['id_anggota']; ?>" readonly>
+									  <input type="text" class="form-control" style="font-size: 12px;" name="id_anggota" value="<?= $data['id_anggota']; ?>" readonly>
 									</div>
 								</td></tr>
 								<tr><th>Tgl Pinjam</th><td>:</td><td>
 									<div class="input-group input-group-sm mb-1">
-									  <input type="text" class="form-control" name="tgl_pinjam" value="<?= $data['tgl_pinjam']; ?>" readonly>
+									  <input type="text" class="form-control" style="font-size: 12px;" name="tgl_pinjam" value="<?= $data['tgl_pinjam']; ?>" readonly>
 									</div>
 								</td></tr>
 								<tr><th>Tgl Entry</th><td>:</td><td>
 									<div class="input-group input-group-sm mb-1">
-									  <input type="text" class="form-control" name="tgl_entry" value="<?= $data['tgl_entry']; ?>" readonly>
+									  <input type="text" class="form-control" style="font-size: 12px;" name="tgl_entry" value="<?= $data['tgl_entry']; ?>" readonly>
 									</div>
 								</td></tr>
 							</thead>
@@ -53,26 +53,26 @@
 				</div>
 				<div class="col-sm-6">
 					<div class="table-responsive">
-						<table class="display table table-sm" style="width: 100%;">
+						<table class="display table table-sm" style="width: 100%; font-size: 12px;">
 							<thead>
 								<tr><th>Bunga</th><td>:</td><td>
 									<div class="input-group input-group-sm mb-1">
-									  <input type="text" class="form-control" name="id_bunga" value="<?= $data['jumlah_bunga'].'%'; ?>" readonly>
+									  <input type="text" class="form-control" style="font-size: 12px;" name="id_bunga" value="<?= $data['jumlah_bunga'].'%'; ?>" readonly>
 									</div>
 								</td></tr>
 								<tr><th>Jenis Pinjaman</th><td>:</td><td>
 									<div class="input-group input-group-sm mb-1">
-									  <input type="text" class="form-control" name="id_jenis_pinjaman" value="<?= $data['id_jenis_pinjaman']; ?>" readonly>
+									  <input type="text" class="form-control" style="font-size: 12px;" name="id_jenis_pinjaman" value="<?= $data['id_jenis_pinjaman']; ?>" readonly>
 									</div>
 								</td></tr>
 								<tr><th>Jumlah Pinjaman</th><td>:</td><td>
 									<div class="input-group input-group-sm mb-1">
-									  <input type="text" class="form-control" name="jml_pinjaman" value="<?= rupiah($data['jumlah_pinjaman']); ?>" readonly>
+									  <input type="text" class="form-control" style="font-size: 12px;" name="jml_pinjaman" value="<?= rupiah($data['jumlah_pinjaman']); ?>" readonly>
 									</div>
 								</td></tr>
 								<tr><th>Tenor</th><td>:</td><td>
 									<div class="input-group input-group-sm mb-1">
-									  <input type="text" class="form-control" name="tenor" value="<?= $data['tenor'].' Bulan'; ?>" readonly>
+									  <input type="text" class="form-control" style="font-size: 12px;" name="tenor" value="<?= $data['tenor'].' Bulan'; ?>" readonly>
 									</div>
 								</td></tr>
 							</thead>
@@ -81,8 +81,8 @@
 				</div>
 				<div class="col-sm-12">
 					<div class="table-responsive">
-						<table class="display table" style="width: 100%;">
-							<thead>
+						<table class="table display table-bordered" style="width: 100%; font-size: 12px;">
+							<thead class="table-info">
 								<tr>
 									<th>No</th>
 									<th class="text-end">Cicilan Pokok</th>
@@ -118,7 +118,7 @@
 													<input type='text' name='tenor' value='".$data['tenor']."' hidden>
 													<input type='text' name='tenor_ke' value='".$nomer."' hidden>
 													<input type='text' name='jumlah' value='".$tc."' hidden>
-													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly><button type='submit' class='btn-md' name='bayar'><span data-feather='edit'></span> Bayar</button>
+													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly><button type='submit' class='btn-md' name='bayar' id='bayar'><span data-feather='edit'></span> Bayar</button>
 													</td>";
 													echo "</form>";
 												}else{
@@ -133,7 +133,7 @@
 													<input type='text' name='tenor' value='".$data['tenor']."' hidden>
 													<input type='text' name='tenor_ke' value='".$nomer."' hidden>
 													<input type='text' name='jumlah' value='".$tc."' hidden>
-													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly><button type='submit' class='btn-md' name='bayar'><span data-feather='edit'></span> Bayar</button>
+													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly><button type='submit' class='btn-md' name='bayar' id='bayar'><span data-feather='edit'></span> Bayar</button>
 													</td>";
 													echo "</form>";
 												}else{
@@ -167,7 +167,10 @@
 													<input type='text' name='tenor' value='".$data['tenor']."' hidden>
 													<input type='text' name='tenor_ke' value='".$nomer."' hidden>
 													<input type='text' name='jumlah' value='".$tc."' hidden>
-													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly><button type='submit' class='btn-md' name='bayar'><span data-feather='edit'></span> Bayar</button>
+													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly>
+													<a href='#' id='bayar'>
+													<button type='submit' class='btn-md' name='bayar' id='bayar'><span data-feather='edit'></span> Bayar</button>
+													</a>
 													</td>";
 													echo "</form>";
 												}else{
@@ -182,7 +185,7 @@
 													<input type='text' name='tenor' value='".$data['tenor']."' hidden>
 													<input type='text' name='tenor_ke' value='".$nomer."' hidden>
 													<input type='text' name='jumlah' value='".$tc."' hidden>
-													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly><button type='submit' class='btn-md' name='bayar'><span data-feather='edit'></span> Bayar</button>
+													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly><button type='submit' class='btn-md' name='bayar' id='bayar'><span data-feather='edit'></span> Bayar</button>
 													</td>";
 													echo "</form>";
 												}else{
@@ -195,7 +198,7 @@
 								}
 								?>
 							</tbody>
-							<tfoot>
+							<tfoot class="table-info">
 								<tr>
 									<th>Jumlah</th>
 									<th class="text-end"><?= rupiah($tjp); ?> <input type="text" name="cicilan_pokok" value="<?= $tjp; ?>" hidden></th>
@@ -210,7 +213,7 @@
 					<?php 
 					if ($dnum > 0) { ?>
 						<table class="display table" style="width: 100%">
-							<thead>
+							<thead class="table-info">
 								<tr>
 									<th>| Sisa Cicilan</th>
 									<th>| Telah dibayar</th>
@@ -226,7 +229,7 @@
 							</tbody>
 						</table>
 					<?php }else{
-						echo "tidak ada";
+						echo "<h5>Data Belom ada / Data menunggu pembayaran</h5>";
 					}
 					?>
 				</div>

@@ -1,13 +1,13 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="card">
-			<div class="card-header">
+			<div class="card-header bg-info">
 				<h5 class="card-title">Data Simpanan Anggota</h5>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table id="example" class="display table" style="width:100%">
-						<thead class="text-center table-dark">
+					<table id="example" class="display table table-bordered" style="width:100%; font-size: 12px;">
+						<thead class="text-center table-info">
 							<tr>
 								<th>No</th>
 								<th>ID Anggota</th>
@@ -37,7 +37,7 @@
 								<td><?= $dts['tgl_lahir']; ?></td>
 								<td><?= $dts['alamat_sekarang']; ?></td>
 								<td><?= $dts['no_telpn']; ?></td>
-								<td class="bg-dark text-white"><?= rupiah($dts['simpanan_pokok']); ?></td>
+								<td class="bg-info text-dark"><?= rupiah($dts['simpanan_pokok']); ?></td>
 								<td><?= $dts['tgl_join']; ?></td>
 								<td><?= $dts['tgl_entry']; ?></td>
 								<td><a href="?page=detail_simpanan&id=<?= $dts['id_anggota']; ?>"><span data-feather='edit'></span></a></td>
@@ -45,7 +45,7 @@
 							<?php }
 							?>
 						</tbody>
-						<tfoot class="text-center table-dark">
+						<tfoot class="text-center table-info">
 							<tr>
 								<th>No</th>
 								<th>ID Anggota</th>

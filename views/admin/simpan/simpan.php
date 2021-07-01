@@ -1,8 +1,8 @@
 <?php require_once('ambil_code.php'); ?>
 <div class="row">
 	<div class="col-sm-12">
-	<div class="card mb-3 bg-light">
-		<div class="card-header">
+	<div class="card mb-3">
+		<div class="card-header bg-info">
 			<h5 class="card-title">Entry Data Simpanan Anggota</h5>
 		</div>
 		<div class="card-body">
@@ -21,10 +21,10 @@
 						  <?php 
 						  $sql = mysqli_query($koneksi, "select * from tb_user");
 						  while ($data = mysqli_fetch_array($sql)) { 
-						  	$anggota = mysqli_query($koneksi, "select * from tb_anggota where id_user = '".$data['id_user']."'");
+						  	$anggota = mysqli_query($koneksi, "select *, TIMESTAMPDIFF(MONTH,tgl_join,NOW()) AS lama_join from tb_anggota where id_user = '".$data['id_user']."'");
 						  	$datagt = mysqli_fetch_array($anggota);
 						  	if ($data['id_user'] == $datagt['id_user']) {?>
-						  		<option value="<?= $data['id_user'] ?>"><?= $data['id_user']; ?> || <?= $data['user'] ?> </option>
+						  		<option value="<?= $data['id_user'] ?>"><?= $data['id_user']; ?> || <?= $data['user'].' || '.$datagt['lama_join'].' bulan'; ?> </option>
 						  	<?php }else{ ?>
 
 						  	<?php }
@@ -70,10 +70,16 @@
 		</div>
 	</div>	
 	</div>
-	<div class="col-sm-12 table-responsive">
-		<h5><a target="_blank" href="../admin/simpan/download/download_simpanan.php"><button class="btn-md btn-primary"><span data-feather="download"></span> Export ke Excel</button></a></h5>
-		<table id="example" class="display table" style="width:100%">
-			<thead class="text-center table-dark">
+	<div class="col-sm-12">
+		<div class="card">
+			<div class="card-header bg-info">
+				<h5 class="card-title">Table Data Simpanan</h5>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+		<h5><a target="_blank" href="../admin/simpan/download/download_simpanan.php" class="text-center"><button class="btn-md btn-primary"><span data-feather="download"></span> Export ke Excel</button></a></h5>
+		<table id="example" class="display table table-bordered" style="width:100%; font-size: 12px;">
+			<thead class="text-center table-info">
 				<tr>
 					<th>No</th>
 					<th>ID Simpanan</th>
@@ -105,7 +111,7 @@
 				<?php }
 				?>
 			</tbody>
-			<tfoot class="text-center table-dark">
+			<tfoot class="text-center table-info">
 				<tr>
 					<th>No</th>
 					<th>ID Simpanan</th>
@@ -119,6 +125,9 @@
 				</tr>
 			</tfoot>
 		</table>
+	</div>
+			</div>
+		</div>
 	</div>
 </div>
 

@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require_once('../../assets/koneksi.php');
+require_once('code_notif.php');
 
 if($_SESSION['status'] != "login"){
   header("location:../../index.php");
@@ -46,8 +47,8 @@ if($_SESSION['status'] != "login"){
     <link href="../../plugins/dashboard/dashboards.css" rel="stylesheet">
   </head>
   <body>
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.php">Kopwali</a>
+<header class="navbar navbar-dark sticky-top bg-danger flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="index.php"><img src="../../assets/img/data.png" alt="" width="40" height="34"/> Kopwali</a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -61,36 +62,36 @@ if($_SESSION['status'] != "login"){
 
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-info sidebar collapse">
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">
-              <span data-feather="home"></span>
+            <a class="nav-link" aria-current="page" href="index.php">
+              <span data-feather="home" class="text-dark"></span>
               Dashboard
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="simpananmember">
-              <span data-feather="bar-chart-2"></span>
+              <span data-feather="bar-chart-2" class="text-dark"></span>
               Simpanan
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="pinjaman">
-              <span data-feather="file"></span>
+              <span data-feather="file" class="text-dark"></span>
               Pinjaman
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pengembalian">
-              <span data-feather="cast"></span>
-              Pengembalian
+            <a class="nav-link" href="shu">
+              <span data-feather="cast" class="text-dark"></span>
+              SHU
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="data_user">
-              <span data-feather="users"></span>
+              <span data-feather="users" class="text-dark"></span>
               Data User
             </a>
           </li>
@@ -105,7 +106,7 @@ if($_SESSION['status'] != "login"){
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
             <a class="nav-link" href="../../logout.php">
-              <span data-feather="log-out"></span>
+              <span data-feather="log-out" class="text-dark"></span>
               Log-out
             </a>
           </li>
@@ -115,7 +116,7 @@ if($_SESSION['status'] != "login"){
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1> | <h5 class="h2"><?= $_SESSION['user']; ?></h5>
+        <h5 class="h5">Dashboard</h5> | <h5 class="h5"><?= $_SESSION['user']; ?></h5>
         <!-- <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -144,8 +145,8 @@ if($_SESSION['status'] != "login"){
             case 'pinjaman':
               require_once('pinjaman.php');
               break;
-            case 'pengembalian':
-              require_once('pengembalian.php');
+            case 'shu':
+              require_once('shu.php');
               break;
             case 'data_user':
               require_once('data_user.php');

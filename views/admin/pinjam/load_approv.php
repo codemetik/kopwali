@@ -1,13 +1,13 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="card">
-			<div class="card-header">
+			<div class="card-header bg-info">
 				<h5 class="card-title">Proses Approv</h5>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					<table id="example" class="display table" style="width: 100%">
-						<thead>
+					<table id="example" class="display table table-bordered" style="width: 100%; font-size: 12px;">
+						<thead class="table-info">
 							<tr>
 								<th>Nama Pengaju</th>
 								<th>JML Pinjam</th>
@@ -38,7 +38,7 @@
 							}
 							?>
 						</tbody>
-						<tfoot>
+						<tfoot class="table-info">
 							<tr>
 								<th>Nama Pengaju</th>
 								<th>JML Pinjam</th>

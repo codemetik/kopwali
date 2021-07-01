@@ -11,7 +11,7 @@
   </ol>
 </nav>
 <div class="row">
-	<div class="card col-lg-2 p-2 bg-info">
+	<div class="card col-lg-2 p-2">
 		<ul class="list-group">
 		  <li class="list-group-item bg-light d-flex justify-content-between align-items-center"><a href="?us=users" class="nav-link text-dark">Users</a> <span class="badge bg-primary rounded-pill"><?php get_id("LV01","LV02", $koneksi); ?></span></li>
 		  <li class="list-group-item bg-light d-flex justify-content-between align-items-center"><a href="?us=members" class="nav-link text-dark">Members</a> <span class="badge bg-primary rounded-pill"><?php get_idlevel("LV03", $koneksi); ?></span></li>
