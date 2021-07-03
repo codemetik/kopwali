@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jun 2021 pada 13.54
+-- Waktu pembuatan: 03 Jul 2021 pada 19.04
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.7
 
@@ -45,10 +45,9 @@ CREATE TABLE `tb_anggota` (
 --
 
 INSERT INTO `tb_anggota` (`id_anggota`, `id_user`, `tgl_join`, `nama_lengkap`, `tempat_lahir`, `tgl_lahir`, `alamat_sekarang`, `no_telpn`, `simpanan_pokok`, `tgl_entry`) VALUES
-('MBR0002', 'US018', '2019-06-06', 'Ahmad Bagus', 'Bandung Bandowoso', '2013-02-27', 'Bandung laut', '089888777111', 50000, '2019-06-07'),
 ('MBR0003', 'US016', '2020-11-08', 'Andi Liau', 'Jakarta', '1992-11-03', 'Jakarta', '089888777665', 50000, '2020-12-08'),
 ('MBR0004', 'US020', '2021-04-10', 'Akhmad Kamil Erad', 'Surabaya', '1998-06-01', 'Jakarta', '089891234232', 50000, '2021-04-10'),
-('MBR0005', 'US017', '2021-03-27', 'Dian Lestari', 'Pamulang', '2000-01-10', 'Tangerang Selatan', '1234567890', 50000, '2021-06-27');
+('MBR0005', 'US021', '2020-01-02', 'Leo lenar', 'Pamulang', '1985-06-02', 'Pamulang', '090909898988', 50000, '2021-07-02');
 
 -- --------------------------------------------------------
 
@@ -62,6 +61,14 @@ CREATE TABLE `tb_approv_pinjaman` (
   `tgl_approv` date NOT NULL,
   `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_approv_pinjaman`
+--
+
+INSERT INTO `tb_approv_pinjaman` (`id_approv_pin`, `id_pinjaman`, `tgl_approv`, `status`) VALUES
+(13, 'PIN001', '2021-06-29', 'approved'),
+(16, 'PIN002', '2021-07-02', 'approved');
 
 -- --------------------------------------------------------
 
@@ -183,12 +190,11 @@ CREATE TABLE `tb_pengembalian` (
 --
 
 INSERT INTO `tb_pengembalian` (`id_pengembalian`, `id_pinjaman`, `id_anggota`, `tenor`, `tenor_ke`, `jumlah_bayar`, `tgl_bayar`) VALUES
-(48, 'PIN001', 'MBR0005', 6, 1, '253750', '2021-06-27'),
-(49, 'PIN001', 'MBR0005', 6, 2, '253750', '2021-06-27'),
-(50, 'PIN001', 'MBR0005', 6, 3, '253750', '2021-06-27'),
-(51, 'PIN001', 'MBR0005', 6, 4, '253750', '2021-06-27'),
-(52, 'PIN001', 'MBR0005', 6, 5, '253750', '2021-06-27'),
-(53, 'PIN001', 'MBR0005', 6, 6, '253750', '2021-06-27');
+(54, 'PIN001', 'MBR0003', 10, 1, '406000', '2021-06-29'),
+(55, 'PIN001', 'MBR0003', 10, 2, '405400', '2021-06-29'),
+(56, 'PIN001', 'MBR0003', 10, 3, '404800', '2021-07-02'),
+(58, 'PIN002', 'MBR0005', 6, 1, '676667', '2021-07-03'),
+(59, 'PIN002', 'MBR0005', 6, 2, '676667', '2021-07-03');
 
 -- --------------------------------------------------------
 
@@ -206,6 +212,14 @@ CREATE TABLE `tb_pinjaman` (
   `jumlah_pinjaman` varchar(100) NOT NULL,
   `tenor` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tb_pinjaman`
+--
+
+INSERT INTO `tb_pinjaman` (`id_pinjaman`, `id_anggota`, `tgl_pinjam`, `tgl_entry`, `id_bunga`, `id_jenis_pinjaman`, `jumlah_pinjaman`, `tenor`) VALUES
+('PIN001', 'MBR0003', '2021-06-29', '2021-06-29', '2', '1', '4000000', '10'),
+('PIN002', 'MBR0005', '2021-07-02', '2021-07-02', '1', '1', '4000000', '6');
 
 -- --------------------------------------------------------
 
@@ -226,20 +240,9 @@ CREATE TABLE `tb_rols` (
 INSERT INTO `tb_rols` (`id_rolsuser`, `id_level_user`, `id_user`) VALUES
 ('R0001', 'LV02', 'US001'),
 ('R0002', 'LV01', 'US003'),
-('R0003', 'LV01', 'US004'),
-('R0004', 'LV01', 'US005'),
-('R0005', 'LV01', 'US006'),
-('R0006', 'LV01', 'US007'),
-('R0007', 'LV02', 'US008'),
-('R0008', 'LV02', 'US009'),
-('R0009', 'LV02', 'US010'),
 ('R0015', 'LV03', 'US016'),
-('R0016', 'LV03', 'US017'),
-('R0017', 'LV03', 'US018'),
-('R0018', 'LV03', 'US019'),
 ('R0019', 'LV03', 'US020'),
-('R0020', 'LV03', 'US021'),
-('R0021', 'LV03', 'US022');
+('R0020', 'LV03', 'US021');
 
 -- --------------------------------------------------------
 
@@ -270,7 +273,26 @@ INSERT INTO `tb_simpanan` (`id_simpanan`, `tgl_simpan`, `jenis_simpanan`, `jumla
 ('SIM006', '2021-02-28', 'wajib, sukarela', 30000, 20000, 'US016', 'MBR0003'),
 ('SIM007', '2021-03-31', 'wajib', 30000, 0, 'US016', 'MBR0003'),
 ('SIM008', '2021-04-30', 'wajib', 30000, 0, 'US016', 'MBR0003'),
-('SIM009', '2021-05-31', 'wajib', 30000, 0, 'US016', 'MBR0003');
+('SIM009', '2021-05-31', 'wajib', 30000, 0, 'US016', 'MBR0003'),
+('SIM010', '2020-01-02', 'wajib', 30000, 0, 'US021', 'MBR0005'),
+('SIM011', '2020-02-02', 'wajib', 30000, 0, 'US021', 'MBR0005'),
+('SIM012', '2020-03-02', 'wajib', 30000, 0, 'US021', 'MBR0005'),
+('SIM013', '2020-04-02', 'wajib, sukarela', 30000, 100000, 'US021', 'MBR0005'),
+('SIM014', '2020-05-02', 'wajib', 30000, 0, 'US021', 'MBR0005'),
+('SIM015', '2020-06-02', 'wajib', 30000, 0, 'US021', 'MBR0005'),
+('SIM016', '2020-07-02', 'wajib', 30000, 0, 'US021', 'MBR0005'),
+('SIM017', '2020-08-02', 'wajib', 30000, 0, 'US021', 'MBR0005'),
+('SIM021', '2020-12-02', 'wajib, sukarela', 30000, 50000, 'US021', 'MBR0005'),
+('SIM022', '2020-10-02', 'wajib, sukarela', 30000, 50000, 'US021', 'MBR0005'),
+('SIM023', '2020-11-02', 'wajib', 30000, 0, 'US021', 'MBR0005'),
+('SIM024', '2020-09-02', 'wajib, sukarela', 30000, 250000, 'US021', 'MBR0005'),
+('SIM025', '2021-01-02', 'wajib', 30000, 0, 'US021', 'MBR0005'),
+('SIM026', '2021-02-02', 'wajib', 30000, 0, 'US021', 'MBR0005'),
+('SIM027', '2021-03-02', 'wajib', 30000, 0, 'US021', 'MBR0005'),
+('SIM028', '2021-04-02', 'wajib', 30000, 0, 'US021', 'MBR0005'),
+('SIM029', '2021-05-02', 'wajib', 30000, 0, 'US021', 'MBR0005'),
+('SIM030', '2021-06-02', 'wajib, sukarela', 30000, 100000, 'US021', 'MBR0005'),
+('SIM031', '2021-07-02', 'wajib, sukarela', 30000, 100000, 'US021', 'MBR0005');
 
 -- --------------------------------------------------------
 
@@ -292,20 +314,9 @@ CREATE TABLE `tb_user` (
 INSERT INTO `tb_user` (`id_user`, `user`, `pass`, `confirm_pass`) VALUES
 ('US001', 'admin', 'admin', 'admin'),
 ('US003', 'op', 'op', 'op'),
-('US004', 'op1', 'op1', 'op1'),
-('US005', 'op2', 'op2', 'op2'),
-('US006', 'op3', 'op3', 'op3'),
-('US007', 'op4', 'op4', 'op4'),
-('US008', 'admin1', 'admin1', 'admin1'),
-('US009', 'admin2', 'admin2', 'admin2'),
-('US010', 'admin3', 'admin3', 'admin3'),
 ('US016', 'andi', 'andi', 'andi'),
-('US017', 'dian', 'dian', 'dian'),
-('US018', 'bagus', 'bagus', 'bagus'),
-('US019', 'kali', 'kali', 'kali'),
 ('US020', 'kamil', 'kamil', 'kamil'),
-('US021', 'bunga', 'bunga', 'bunga'),
-('US022', 'dodi', 'dodi', 'dodi');
+('US021', 'leo', 'leo', 'leo');
 
 --
 -- Indexes for dumped tables
@@ -397,7 +408,7 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT untuk tabel `tb_approv_pinjaman`
 --
 ALTER TABLE `tb_approv_pinjaman`
-  MODIFY `id_approv_pin` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_approv_pin` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_bunga`
@@ -421,7 +432,7 @@ ALTER TABLE `tb_jenis_pinjaman`
 -- AUTO_INCREMENT untuk tabel `tb_pengembalian`
 --
 ALTER TABLE `tb_pengembalian`
-  MODIFY `id_pengembalian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id_pengembalian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

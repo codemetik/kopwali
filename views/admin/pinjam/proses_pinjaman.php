@@ -20,7 +20,8 @@ if (isset($_POST['simpan_data'])) {
 
 
 	$query = mysqli_query($koneksi, "insert into tb_pinjaman(id_pinjaman, id_anggota, tgl_pinjam, tgl_entry, id_bunga, id_jenis_pinjaman, jumlah_pinjaman, tenor) values('$id_pinjaman','$id_anggota','$tgl_pinjam','$tgl_entry','$id_bunga','$id_jenis_pinjaman','$jml_pinjaman','$tenor')");
-	if ($query) {
+	$wait = mysqli_query($koneksi, "insert tb_approv_pinjaman(id_pinjaman, tgl_approv, status) values('$id_pinjaman','$tgl_pinjam','waithing')");
+	if ($query && $wait) {
 		echo "<script>
 		alert('Data berhasil disimpan!');
 		document.location.href = '../../admin/pinjaman?pin=Pinjaman';

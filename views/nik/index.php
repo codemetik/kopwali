@@ -82,12 +82,6 @@ if($_SESSION['status'] != "login"){
               PinjamanQu
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pelunasan">
-              <span data-feather="cast"></span>
-              Pelunasan
-            </a>
-          </li>
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -137,9 +131,6 @@ if($_SESSION['status'] != "login"){
               break;
             case 'pinjamanku':
               require_once('pinjamanku.php');
-              break;
-            case 'pelunasan':
-              require_once('pelunasan.php');
               break;
             
             default:

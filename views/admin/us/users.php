@@ -51,10 +51,12 @@
 					<h5 class="card-title">Table User</h5>
 				</div>
 				<div class="card-body">
+					<form action="" method="post">
 					<div class="table-responsive">
 						<table id="example" class="display table table-bordered" style="width:100%; font-size: 12px;">
 					        <thead class="text-center table-info">
 					            <tr>
+					            	<th></th>
 					            	<th>No</th>
 					                <th>ID</th>
 					                <th>Username</th>
@@ -67,8 +69,13 @@
 					        	$no=1;
 					        	$sql = mysqli_query($koneksi, "select * from tb_user x inner join tb_rols y on y.id_user = x.id_user inner join tb_level_user z on z.id_level_user = y.id_level_user");
 					        	while ($data = mysqli_fetch_array($sql)) {
-					        		echo "<tr>
-					        				<td>".$no++."</td>
+					        		echo "<tr>";?>
+					        				<td class="text-center">
+					        					<div class="form-check form-check-inline">
+												  <input class="form-check-input" type="checkbox" name="checkin[]" value="<?= $data['id_user']; ?>">
+												</div>
+					        				</td>
+					        				<?= "<td>".$no++."</td>
 							                <td>".$data['id_user']."</td>
 							                <td>".$data['user']."</td>
 							                <td>".$data['name_level']."</td>"; ?>
@@ -79,6 +86,11 @@
 					        </tbody>
 					        <tfoot class="text-center table-info">
 					            <tr>
+					            	<th>
+					            		<div class="form-group">
+											<button class="btn-md btn-primary" type="submit" name="selectdel" onclick="return confirm('Data yang anda pilih akan terhapus secara permanen, Harap periksa kembali!!! Jika benar klik tombol OK')">Delete</button>
+										</div>
+					            	</th>
 					            	<th>No</th>
 					                <th>ID</th>
 					                <th>Username</th>
@@ -87,7 +99,8 @@
 					            </tr>
 					        </tfoot>
 					    </table>
-					</div>		
+					</div>
+					</form>	
 				</div>
 			</div>
 		</div>
@@ -140,6 +153,25 @@ if (isset($_POST['add'])) {
 		alert('Data gagal dihapus');
 		document.location.href = 'data_user?us=users';
 		</script>";
+	}
+}else if(isset($_POST['selectdel'])){
+	$checkin = $_POST['checkin'];
+	
+	for ($i=0; $i < count($checkin); $i++) { 
+		echo $checkin[$i]."<br>";
+
+		$sql = mysqli_query($koneksi, "delete from tb_user where id_user = '".$checkin[$i]."'");
+		if ($sql) {
+			echo "<script>
+			alert('Data berhasil dihapus');
+			document.location.href = 'data_user?us=users';
+			</script>";
+		}else{
+			echo "<script>
+			alert('Data gagal dihapus');
+			document.location.href = 'data_user?us=users';
+			</script>";
+		}
 	}
 }
 ?>

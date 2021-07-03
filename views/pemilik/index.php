@@ -156,6 +156,8 @@ if($_SESSION['status'] != "login"){
               require_once('index.php');
               break;
           }
+      }else{
+        require_once('home.php');
       }
       ?>
     </main>

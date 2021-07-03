@@ -24,9 +24,9 @@
 							<?php 
 							$sqlu = mysqli_query($koneksi, "select * from tb_pinjaman x inner join tb_bunga y on y.id_bunga = x.id_bunga inner join tb_jenis_pinjaman z on z.id_jenis_pinjaman = x.id_jenis_pinjaman inner join tb_anggota w on w.id_anggota = x.id_anggota");
 							while ($datau = mysqli_fetch_array($sqlu)) { 
-								$ce = mysqli_query($koneksi, "select * from tb_approv_pinjaman where id_pinjaman = '".$datau['id_pinjaman']."'");
+								$ce = mysqli_query($koneksi, "select * from tb_approv_pinjaman where id_pinjaman = '".$datau['id_pinjaman']."' and status = 'waithing'");
 								$dc = mysqli_fetch_array($ce);
-								if(isset($datau['id_pinjaman']) != isset($dc['id_pinjaman'])) { ?>
+								if(isset($datau['id_pinjaman']) == isset($dc['id_pinjaman'])) { ?>
 									<tr>
 										<td><?= $datau['id_pinjaman']; ?></td>
 										<td><?= $datau['id_anggota']; ?></td>
@@ -84,7 +84,7 @@ if (isset($_GET['delete'])) {
 
 if (isset($_GET['insert'])) {
 	$idpin = $_GET['insert'];
-	$sql = mysqli_query($koneksi, "insert into tb_approv_pinjaman(id_pinjaman, tgl_approv, status) values('$idpin','".date('Y-m-d')."','approved')");
+	$sql = mysqli_query($koneksi, "update tb_approv_pinjaman set tgl_approv = '".date('Y-m-d')."', status = 'approved' where id_pinjaman = '$idpin'");
 	if ($sql) {
 		echo "<script>
 		alert('Data berhasil disetujui!');

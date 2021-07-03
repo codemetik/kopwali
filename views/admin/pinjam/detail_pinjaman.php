@@ -118,8 +118,10 @@
 													<input type='text' name='tenor' value='".$data['tenor']."' hidden>
 													<input type='text' name='tenor_ke' value='".$nomer."' hidden>
 													<input type='text' name='jumlah' value='".$tc."' hidden>
-													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly><button type='submit' class='btn-md' name='bayar' id='bayar'><span data-feather='edit'></span> Bayar</button>
-													</td>";
+													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly>
+													<a href='#'>";?>
+													<button type='submit' class='btn-md' name='bayar' id='bayar' onclick="return confirm('Data pengembalian akan otomatis ditambah secara permanen, Harap periksa kembali nominal uang yang anda terima!!! Jika pembayaran benar, klik tombol OK')"><span data-feather='edit'></span> Bayar</button>
+													<?= "</a></td>";
 													echo "</form>";
 												}else{
 													echo "<td class='text-end'>".rupiah($tc)."</td>";
@@ -133,8 +135,10 @@
 													<input type='text' name='tenor' value='".$data['tenor']."' hidden>
 													<input type='text' name='tenor_ke' value='".$nomer."' hidden>
 													<input type='text' name='jumlah' value='".$tc."' hidden>
-													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly><button type='submit' class='btn-md' name='bayar' id='bayar'><span data-feather='edit'></span> Bayar</button>
-													</td>";
+													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly>
+													<a href='#'>";?>
+													<button type='submit' class='btn-md' name='bayar' id='bayar' onclick="return confirm('Data pengembalian akan otomatis ditambah secara permanen, Harap periksa kembali nominal uang yang anda terima!!! Jika pembayaran benar, klik tombol OK')"><span data-feather='edit'></span> Bayar</button>
+													<?= "</a></td>";
 													echo "</form>";
 												}else{
 													echo "<td class='text-end'>".rupiah($tc)."</td>";
@@ -168,9 +172,9 @@
 													<input type='text' name='tenor_ke' value='".$nomer."' hidden>
 													<input type='text' name='jumlah' value='".$tc."' hidden>
 													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly>
-													<a href='#' id='bayar'>
-													<button type='submit' class='btn-md' name='bayar' id='bayar'><span data-feather='edit'></span> Bayar</button>
-													</a>
+													<a href='#' id='bayar'>";?>
+													<button type='submit' class='btn-md' name='bayar' id='bayar' onclick="return confirm('Data pengembalian akan otomatis ditambah secara permanen, Harap periksa kembali nominal uang yang anda terima!!! Jika pembayaran benar, klik tombol OK')"><span data-feather='edit'></span> Bayar</button>
+													<?= "</a>
 													</td>";
 													echo "</form>";
 												}else{
@@ -185,7 +189,10 @@
 													<input type='text' name='tenor' value='".$data['tenor']."' hidden>
 													<input type='text' name='tenor_ke' value='".$nomer."' hidden>
 													<input type='text' name='jumlah' value='".$tc."' hidden>
-													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly><button type='submit' class='btn-md' name='bayar' id='bayar'><span data-feather='edit'></span> Bayar</button>
+													<input type='text' class='form-control-sm bg-success text-light' value='".rupiah($tc)."' readonly>
+													<a href='#'>"; ?>
+													<button type='submit' class='btn-md' name='bayar' id='bayar' onclick="return confirm('Data pengembalian akan otomatis ditambah secara permanen, Harap periksa kembali nominal uang yang anda terima!!! Jika pembayaran benar, klik tombol OK')"><span data-feather='edit'></span> Bayar</button>
+													<?= "</a>
 													</td>";
 													echo "</form>";
 												}else{

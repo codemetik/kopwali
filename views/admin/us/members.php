@@ -14,6 +14,7 @@ require_once('ambil_code.php');
 			<div class="col-sm-4">
 				<div class="input-group input-group-sm mb-1">
 				<select class="js-example-basic-single form-control" name="id_user" required>
+					<option>--Pilih--</option>
 				  <?php 
 				  $sql = mysqli_query($koneksi, "SELECT * FROM tb_user X INNER JOIN tb_rols z ON z.id_user = x.id_user INNER JOIN tb_level_user Y ON y.id_level_user = z.id_level_user WHERE z.id_level_user != 'LV01' AND z.id_level_user != 'LV02'");
 				  while ($data = mysqli_fetch_array($sql)) { 

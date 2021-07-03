@@ -20,10 +20,10 @@
 							<?php 
 							$sqlue = mysqli_query($koneksi, "select * from tb_pinjaman x inner join tb_bunga y on y.id_bunga = x.id_bunga inner join tb_jenis_pinjaman z on z.id_jenis_pinjaman = x.id_jenis_pinjaman inner join tb_anggota w on w.id_anggota = x.id_anggota");
 							while ($dataue = mysqli_fetch_array($sqlue)) { 
-								$cee = mysqli_query($koneksi, "select * from tb_approv_pinjaman where id_pinjaman = '".$dataue['id_pinjaman']."'");
+								$cee = mysqli_query($koneksi, "select * from tb_approv_pinjaman where id_pinjaman = '".$dataue['id_pinjaman']."' and status = 'waithing'");
 								// $dce = mysqli_num_rows($cee);
 								$dappe = mysqli_fetch_array($cee);
-								if (isset($dataue['id_pinjaman']) != isset($dappe['id_pinjaman'])) {
+								if (isset($dataue['id_pinjaman']) == isset($dappe['id_pinjaman'])) {
 								?>
 								<tr>
 									<td><?= $dataue['nama_lengkap'];?></td>

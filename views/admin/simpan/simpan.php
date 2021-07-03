@@ -88,6 +88,7 @@
 					<th>Jenis Simpanan</th>
 					<th>Simpanan wajib</th>
 					<th>Simpanan Sukarela</th>
+					<th>Jumlah</th>
 					<th>Tgl Simpan</th>
 					<th>Action</th>
 				</tr>
@@ -103,8 +104,9 @@
 					<td><?= $dts['id_user']; ?></td>
 					<td><?= $dts['nama_lengkap']; ?></td>
 					<td><?= $dts['jenis_simpanan']; ?></td>
-					<td><?= $dts['jumlah_wajib']; ?></td>
-					<td><?= $dts['jumlah_sukarela']; ?></td>
+					<td><?= rupiah($dts['jumlah_wajib']); ?></td>
+					<td><?= rupiah($dts['jumlah_sukarela']); ?></td>
+					<td><?= rupiah($dts['jumlah_wajib']+ $dts['jumlah_sukarela']); ?></td>
 					<td><?= $dts['tgl_simpan']; ?></td>
 					<td><a href="?sim=edit_simpan&id=<?= $dts['id_simpanan']; ?>"><span data-feather='edit'></span></a> | <a href="../admin/simpan/delete/delete_simpanan.php?id=<?= $dts['id_simpanan']; ?>" onclick="return confirm('Yakin mau di hapus?')"><span data-feather='delete'></span></a></td>
 				</tr>
@@ -120,6 +122,7 @@
 					<th>Jenis Simpanan</th>
 					<th>Simpanan wajib</th>
 					<th>Simpanan Sukarela</th>
+					<th>Jumlah</th>
 					<th>Tgl Simpan</th>
 					<th>Action</th>
 				</tr>
