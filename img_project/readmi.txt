@@ -9,7 +9,10 @@ koperasi
 
 db_koperasi
 usr_koperasi
-oHOln~t(nyKp)[5P
+$hostname = 'localhost';
+$username = 'id16563753_usr_koperasi';
+$password = 'D\5vl|0xG?sncMcS';
+$database = 'id16563753_db_koperasi';
 
 db :
 id16563753_db_koperasi
